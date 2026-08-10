@@ -5,18 +5,18 @@
 class Tctest < Formula
   desc "Trigger provider acceptance test builds on TeamCity"
   homepage "https://github.com/katbyte/tctest"
-  url "https://github.com/katbyte/tctest/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "4a5a7980f3905cbb7da73cd671cb52974fb855e955bddf96db283d1cffc0b708"
+  url "https://github.com/katbyte/tctest/archive/refs/tags/v1.2.0.tar.gz"
+  sha256 "931ece8b9a30b7332ee29580c23c4ce2ac9c7be251390ff1d051a70293e5548f"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/tctest.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/tctest/lib/version.Version=v1.0.1 -X github.com/katbyte/tctest/lib/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/tctest/lib/version.Version=v1.2.0 -X github.com/katbyte/tctest/lib/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v1.0.1", shell_output("#{bin}/tctest version")
+    assert_match "v1.2.0", shell_output("#{bin}/tctest version")
   end
 end
