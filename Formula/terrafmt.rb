@@ -5,18 +5,18 @@
 class Terrafmt < Formula
   desc "Format terraform blocks embedded in files"
   homepage "https://github.com/katbyte/terrafmt"
-  url "https://github.com/katbyte/terrafmt/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "bb792f4df663bdfbb1caff0ce3dadd864827bc0938732bd87dfa81ab8a62d7d0"
+  url "https://github.com/katbyte/terrafmt/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "fe41f341798cc8624c2ccf3368f917fc1ff1c8e2ace8af258723cbdee581bc15"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/terrafmt.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/terrafmt/lib/version.Version=v1.0.0 -X github.com/katbyte/terrafmt/lib/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/terrafmt/lib/version.Version=v1.0.1 -X github.com/katbyte/terrafmt/lib/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v1.0.0", shell_output("#{bin}/terrafmt version")
+    assert_match "v1.0.1", shell_output("#{bin}/terrafmt version")
   end
 end
