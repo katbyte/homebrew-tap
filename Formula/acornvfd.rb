@@ -5,18 +5,18 @@
 class Acornvfd < Formula
   desc "Control the Acorn Workshop XGGF-1V48 VFD clock over Bluetooth LE"
   homepage "https://github.com/katbyte/acorn-vfd"
-  url "https://github.com/katbyte/acorn-vfd/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "a1a9ce71d213552a6768618eb8711fea7b713b6bf08fc40b77e16ab5bab8932f"
+  url "https://github.com/katbyte/acorn-vfd/archive/refs/tags/v0.1.3.tar.gz"
+  sha256 "039c3e58f58c2a3599d8d6e0ea1008e89b6aabed7412e320699432a59478c8c6"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/acorn-vfd.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/acornvfd/lib/version.Version=v0.1.2 -X github.com/katbyte/acornvfd/lib/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/acornvfd/lib/version.Version=v0.1.3 -X github.com/katbyte/acornvfd/lib/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.2", shell_output("#{bin}/acornvfd version")
+    assert_match "v0.1.3", shell_output("#{bin}/acornvfd version")
   end
 end
