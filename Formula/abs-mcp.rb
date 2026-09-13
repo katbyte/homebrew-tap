@@ -5,18 +5,18 @@
 class AbsMcp < Formula
   desc "MCP server and CLI for curating an Audiobookshelf library"
   homepage "https://github.com/katbyte/abs-mcp"
-  url "https://github.com/katbyte/abs-mcp/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "692ceb868a4e404e6de1369eb6a7216761043fc8fd16037897f3f7af58d752d5"
+  url "https://github.com/katbyte/abs-mcp/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "f31102ef917081fc008cebefb9749837f219ad4c2f0921c9bae4e3a23f066af7"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/abs-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/abs-mcp/lib/version.Version=v0.2.0 -X github.com/katbyte/abs-mcp/lib/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/abs-mcp/lib/version.Version=v0.3.0 -X github.com/katbyte/abs-mcp/lib/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.2.0", shell_output("#{bin}/abs-mcp version")
+    assert_match "v0.3.0", shell_output("#{bin}/abs-mcp version")
   end
 end
