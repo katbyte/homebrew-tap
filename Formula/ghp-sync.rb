@@ -5,18 +5,18 @@
 class GhpSync < Formula
   desc "Sync GitHub issues and PRs to a GitHub Project"
   homepage "https://github.com/katbyte/ghp-sync"
-  url "https://github.com/katbyte/ghp-sync/archive/refs/tags/v0.3.2.tar.gz"
-  sha256 "34a1067f12c8b4cc582a923de63948855cfb841b3e9c7233cf37d1c7e57378e9"
+  url "https://github.com/katbyte/ghp-sync/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "74691f1cf743cbf11effe6ffd883ff90dd6d2a804f261b35e0dba35269811bef"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/ghp-sync.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.2 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.4.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.3.2", shell_output("#{bin}/ghp-sync version")
+    assert_match "v0.4.0", shell_output("#{bin}/ghp-sync version")
   end
 end
