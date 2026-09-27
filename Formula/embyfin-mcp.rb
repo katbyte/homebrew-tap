@@ -5,18 +5,18 @@
 class EmbyfinMcp < Formula
   desc "MCP server and CLI for curating Emby and Jellyfin media libraries"
   homepage "https://github.com/katbyte/embyfin-mcp"
-  url "https://github.com/katbyte/embyfin-mcp/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "38b15db39033ef5f2ddd1c1bccd625d510fe84c32aac52fdff3eeadf2360a1f2"
+  url "https://github.com/katbyte/embyfin-mcp/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "761660e8a4686de84f7781483be6e15a89d095fc97c82d5058c6e6b12aa1a12d"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/embyfin-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.2.0", shell_output("#{bin}/embyfin-mcp version")
+    assert_match "v0.3.0", shell_output("#{bin}/embyfin-mcp version")
   end
 end
