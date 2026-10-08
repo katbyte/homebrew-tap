@@ -5,18 +5,18 @@
 class Prawn < Formula
   desc "Triage a repository's pull requests: close checks, labels, and a review-flow explorer"
   homepage "https://github.com/katbyte/prawn"
-  url "https://github.com/katbyte/prawn/archive/refs/tags/v0.7.2.tar.gz"
-  sha256 "8af43ebc0e035071e7f7f877c5cfd1ede687917f0922d4b2492feedff64cfc05"
+  url "https://github.com/katbyte/prawn/archive/refs/tags/v0.8.0.tar.gz"
+  sha256 "995069804b1c3884cac6550da62c551b5ce52a97d05581846efb4f24b3c52365"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/prawn.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.7.2 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.8.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.7.2", shell_output("#{bin}/prawn version")
+    assert_match "v0.8.0", shell_output("#{bin}/prawn version")
   end
 end
