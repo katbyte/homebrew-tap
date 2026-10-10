@@ -5,18 +5,18 @@
 class ProwlarrMcp < Formula
   desc "MCP server and CLI for auditing and running a Prowlarr indexer manager"
   homepage "https://github.com/katbyte/prowlarr-mcp"
-  url "https://github.com/katbyte/prowlarr-mcp/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "216e510353925f0be704939affbd74e643815b3094f11ca1e304e945edbb609e"
+  url "https://github.com/katbyte/prowlarr-mcp/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "36e65effadc31572861c5d27c41d4be7f33662744e740f959b42da5b5c18b13e"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/prowlarr-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.0", shell_output("#{bin}/prowlarr-mcp version")
+    assert_match "v0.2.0", shell_output("#{bin}/prowlarr-mcp version")
   end
 end
