@@ -5,18 +5,18 @@
 class TechnitiumMcp < Formula
   desc "MCP server and CLI for running and auditing Technitium DNS servers"
   homepage "https://github.com/katbyte/technitium-mcp"
-  url "https://github.com/katbyte/technitium-mcp/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "7502297d3b5f05c537aa920f4b2d440a6388643b5138456cba06e34b575c8680"
+  url "https://github.com/katbyte/technitium-mcp/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "7d131ffdd502ff668d8be2d622134a7eed7ead3dd26adacddb5ab4b3b8df061b"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/technitium-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.2.0", shell_output("#{bin}/technitium-mcp version")
+    assert_match "v0.2.1", shell_output("#{bin}/technitium-mcp version")
   end
 end
