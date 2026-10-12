@@ -5,18 +5,18 @@
 class LeontpMetrics < Formula
   desc "LeoNTP time server state as a Prometheus metrics page"
   homepage "https://github.com/katbyte/leontp-metrics"
-  url "https://github.com/katbyte/leontp-metrics/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0b63f48b6f11b0bfcd72df68fd1e4554cfef1966dbba00ded783996ea5c2f06f"
+  url "https://github.com/katbyte/leontp-metrics/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "b0d57140a15440c7a384fac707063b7aefc2d18b42f55d2f1a319284943cd185"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/leontp-metrics.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.0", shell_output("#{bin}/leontp-metrics version")
+    assert_match "v0.1.1", shell_output("#{bin}/leontp-metrics version")
   end
 end
