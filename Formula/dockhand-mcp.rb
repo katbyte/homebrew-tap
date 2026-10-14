@@ -5,18 +5,18 @@
 class DockhandMcp < Formula
   desc "MCP server and CLI for the containers and stacks a Dockhand manages"
   homepage "https://github.com/katbyte/dockhand-mcp"
-  url "https://github.com/katbyte/dockhand-mcp/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "438c1e084e7d9b93dd7d5788e955077465d33488d1a1de696472c5e489ea64e9"
+  url "https://github.com/katbyte/dockhand-mcp/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "5114a2fa7fd7441cc153712e0dedc6bc94368fbd5169273448725b31e27b37fc"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/dockhand-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.0", shell_output("#{bin}/dockhand-mcp version")
+    assert_match "v0.2.0", shell_output("#{bin}/dockhand-mcp version")
   end
 end
