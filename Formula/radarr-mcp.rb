@@ -5,18 +5,18 @@
 class RadarrMcp < Formula
   desc "MCP server and CLI for curating a Radarr film library"
   homepage "https://github.com/katbyte/radarr-mcp"
-  url "https://github.com/katbyte/radarr-mcp/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "4af88cfd9af741ed0e58cef083e9616055724028bffbc160f79eaa6d305be4f6"
+  url "https://github.com/katbyte/radarr-mcp/archive/refs/tags/v0.4.0.tar.gz"
+  sha256 "f215d2b8981c101061aacb89d6cb8172b5e91dcb67de8bf82bdd81cb633f6f4c"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/radarr-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.4.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.3.0", shell_output("#{bin}/radarr-mcp version")
+    assert_match "v0.4.0", shell_output("#{bin}/radarr-mcp version")
   end
 end
