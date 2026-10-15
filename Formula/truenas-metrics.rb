@@ -5,18 +5,18 @@
 class TruenasMetrics < Formula
   desc "What a TrueNAS says about itself as a Prometheus metrics page"
   homepage "https://github.com/katbyte/truenas-metrics"
-  url "https://github.com/katbyte/truenas-metrics/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "20268d3bc8a8dc4dd602f8eacc36b51f807583cf91fafc3d01f1f1e31fbf2dcf"
+  url "https://github.com/katbyte/truenas-metrics/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "6ab429d3d40040bb8217465481004ffb6ee5b6f30517197b5832ae17847bf049"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/truenas-metrics.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.0", shell_output("#{bin}/truenas-metrics version")
+    assert_match "v0.1.1", shell_output("#{bin}/truenas-metrics version")
   end
 end
