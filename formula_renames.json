@@ -1,0 +1,5 @@
+{
+  "embyfin-metrics": "embyfin-exporter",
+  "leontp-metrics": "leontp-exporter",
+  "truenas-metrics": "truenas-exporter"
+}
