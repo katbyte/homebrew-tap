@@ -5,18 +5,18 @@
 class EmbyfinExporter < Formula
   desc "Emby and Jellyfin state as a Prometheus metrics page"
   homepage "https://github.com/katbyte/embyfin-exporter"
-  url "https://github.com/katbyte/embyfin-exporter/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "cd280d6997120a38c1b0d0fb1885e5cf14c8a48355f20e32b1687ebd4983b2d8"
+  url "https://github.com/katbyte/embyfin-exporter/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "cff5298421defae36b570866cb31d3864949f37ee2b90fdd8f5eef586c1187bf"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/embyfin-exporter.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.4.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.5.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.4.0", shell_output("#{bin}/embyfin-exporter version")
+    assert_match "v0.5.0", shell_output("#{bin}/embyfin-exporter version")
   end
 end
