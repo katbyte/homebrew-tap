@@ -5,18 +5,18 @@
 class TruenasMcp < Formula
   desc "MCP server and CLI for looking after a TrueNAS"
   homepage "https://github.com/katbyte/truenas-mcp"
-  url "https://github.com/katbyte/truenas-mcp/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "9b2d287cfad266ba542bf6aeda05ba012da7b1f65a5622e2721b6db65531b9e4"
+  url "https://github.com/katbyte/truenas-mcp/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "e6dff711f84737df0aefebd86d45c88f1c811ecfd00781fe65fd3aaa120fd22d"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/truenas-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.2.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.2.0", shell_output("#{bin}/truenas-mcp version")
+    assert_match "v0.2.1", shell_output("#{bin}/truenas-mcp version")
   end
 end
