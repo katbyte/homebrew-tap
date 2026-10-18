@@ -5,18 +5,18 @@
 class TruenasExporter < Formula
   desc "What a TrueNAS says about itself as a Prometheus metrics page"
   homepage "https://github.com/katbyte/truenas-exporter"
-  url "https://github.com/katbyte/truenas-exporter/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "47e497f86028bf869362cc459c85209812dfa7e793135136563fdaaad4889320"
+  url "https://github.com/katbyte/truenas-exporter/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "3944d2ee205be9f11d869e09bf780d6a7bfd8be2cccaa69c77e794ca403ece5a"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/truenas-exporter.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.3.0", shell_output("#{bin}/truenas-exporter version")
+    assert_match "v0.3.1", shell_output("#{bin}/truenas-exporter version")
   end
 end
