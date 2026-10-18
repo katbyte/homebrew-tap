@@ -5,8 +5,8 @@
 class SasExporter < Formula
   desc "Health of a Linux machine's SAS cards, cables, backplanes and disks for Prometheus"
   homepage "https://github.com/katbyte/sas-exporter"
-  url "https://github.com/katbyte/sas-exporter/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "cbd524910c88647a5913e00aed655f0962270ea1ac701596e4192011abab737c"
+  url "https://github.com/katbyte/sas-exporter/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "166d6d7b5a79d71fb36b0d4c822a9cffe1141dde15de1d0e5bcab8c6a9cceb24"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/sas-exporter.git", branch: "main"
 
@@ -15,10 +15,10 @@ class SasExporter < Formula
   depends_on :linux
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.3.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.3.0", shell_output("#{bin}/sas-exporter version")
+    assert_match "v0.3.1", shell_output("#{bin}/sas-exporter version")
   end
 end
