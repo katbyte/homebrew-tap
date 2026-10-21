@@ -5,18 +5,18 @@
 class SonarrMcp < Formula
   desc "MCP server and CLI for running and auditing a Sonarr TV library"
   homepage "https://github.com/katbyte/sonarr-mcp"
-  url "https://github.com/katbyte/sonarr-mcp/archive/refs/tags/v0.4.1.tar.gz"
-  sha256 "080ffedfb6add727744c43ef9ef13e817da33dd11bc9cb661f78fa2a08fdc8ed"
+  url "https://github.com/katbyte/sonarr-mcp/archive/refs/tags/v0.4.2.tar.gz"
+  sha256 "bfdda4142dc93aa787fe60eb831a1280d7ddf16404f0d65e130f426061e7e689"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/sonarr-mcp.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.4.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.4.2 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.4.1", shell_output("#{bin}/sonarr-mcp version")
+    assert_match "v0.4.2", shell_output("#{bin}/sonarr-mcp version")
   end
 end
