@@ -5,8 +5,8 @@
 class EmbyBifBuilder < Formula
   desc "Gives Emby its preview pictures, cut from Jellyfin's thumbnails or built from the video"
   homepage "https://github.com/katbyte/emby-bif-builder"
-  url "https://github.com/katbyte/emby-bif-builder/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "6cbc1f378ad10baab0a05bba1b2f0129efa1101a0ee70c56ad3649b55e42e72e"
+  url "https://github.com/katbyte/emby-bif-builder/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "056498f5797c6d352f0743bc1042c146b5fae06d87a0e2ebc2a0c0f97201f38a"
   license "GPL-3.0-only"
   head "https://github.com/katbyte/emby-bif-builder.git", branch: "main"
 
@@ -14,10 +14,10 @@ class EmbyBifBuilder < Formula
 
   def install
     # the program is ebb, not the module's name
-    system "go", "build", *std_go_args(output: bin/"ebb", ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.0 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
+    system "go", "build", *std_go_args(output: bin/"ebb", ldflags: "-s -w -X github.com/katbyte/go-kt/version.Version=v0.1.1 -X github.com/katbyte/go-kt/version.GitCommit=homebrew")
   end
 
   test do
-    assert_match "v0.1.0", shell_output("#{bin}/ebb version")
+    assert_match "v0.1.1", shell_output("#{bin}/ebb version")
   end
 end
