@@ -5,10 +5,10 @@
 class SmartctlExporter < Formula
   desc "Disk health from smartctl for Prometheus, katbyte's build of smartctl_exporter"
   homepage "https://github.com/katbyte/smartctl_exporter"
-  url "https://github.com/katbyte/smartctl_exporter/archive/refs/tags/v0.15.0-kt.4.tar.gz"
+  url "https://github.com/katbyte/smartctl_exporter/archive/refs/tags/v0.15.0-kt.5.tar.gz"
   # set outright rather than left for Homebrew to guess from the tarball's name
-  version "0.15.0-kt.4"
-  sha256 "ccc9424cb277076ba135e8878ac7e7b989f05ed0e31d213471dabee0e5f52488"
+  version "0.15.0-kt.5"
+  sha256 "1611bdc637257dc23821a3a9635ef3e14b5f897f761d83c6dd14229358f4b104"
   license "Apache-2.0"
   head "https://github.com/katbyte/smartctl_exporter.git", branch: "master"
 
@@ -16,7 +16,7 @@ class SmartctlExporter < Formula
   depends_on "smartmontools"
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/prometheus/common/version.Version=0.15.0-kt.4 -X github.com/prometheus/common/version.Revision=homebrew -X github.com/prometheus/common/version.Branch=master -X github.com/prometheus/common/version.BuildUser=homebrew")
+    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/prometheus/common/version.Version=0.15.0-kt.5 -X github.com/prometheus/common/version.Revision=homebrew -X github.com/prometheus/common/version.Branch=master -X github.com/prometheus/common/version.BuildUser=homebrew")
   end
 
   # brew services start smartctl_exporter keeps it running. smartctl comes from the smartmontools formula, not /usr/sbin where the exporter looks by default
@@ -28,6 +28,6 @@ class SmartctlExporter < Formula
   end
 
   test do
-    assert_match "0.15.0-kt.4", shell_output("#{bin}/smartctl_exporter --version 2>&1")
+    assert_match "0.15.0-kt.5", shell_output("#{bin}/smartctl_exporter --version 2>&1")
   end
 end
